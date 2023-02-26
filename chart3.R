@@ -3,10 +3,8 @@ library("dplyr")
 library("styler")
 library("plotly")
 
-setwd("C:\\Users\\andre\\OneDrive\\Desktop\\info201\\a3-spl-checkouts-arizo32")
-
-book_df <- read.csv("book_version.csv")
-movie_df <- read.csv("movie_version.csv")
+book_df <- read.csv("https://raw.githubusercontent.com/info-201a-wi23/a3-spl-checkouts-arizo32/main/book_version.csv")
+movie_df <- read.csv("https://raw.githubusercontent.com/info-201a-wi23/a3-spl-checkouts-arizo32/main/movie_version.csv")
 movie_and_book <- rbind(movie_df, book_df)
 
 total_materials <- movie_and_book %>%
