@@ -5,82 +5,53 @@ output: html_document
 
 ### Introduction
 
-An introduction of the data and a description of the trends/books/items you are choosing to analyze (and why!)
+I plan to compare the checkout rates of the book and audiobook version of "The Accidental Billionaires" by Ben Mezrich with the movie adaptation, "The Social Network" produced by David Fincher. I have a personal interest in this story as I have consumed it in multiple forms, including reading, listening, and watching it multiple times. Initially, I became fascinated with the movie and watched it at least twice a day for two months straight in 2019. However, it wasn't until I had to do a project on a book in my freshman English class that I actually read the original book. Despite being well-versed in the story, I had never read the book version until then. So, relatively, I'm curious, how the numbers of the book/audiobook version numbers compare to those of the film. Though, the film is a highly rated movie by a highly rated producer as he also produced an already well-credited film, known as "Fight Club", so it is very well-versed in the film industry.   
 
 ### Summary Information
 
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
-
-These will likely be calculated using your DPLYR skills, answering questions such as:
-
-- What is the average number of checkouts for each item?
-- What is the month or year with the most/least checkouts for a book that you're interested in?
-- What is the month or year with the most/least checkouts for ebooks?
-- How has the number of print book checkouts changed over time?
-
-Feel free to calculate and report values that you find relevant.
+```{r warning=FALSE, code=readLines("summary.R"), include=FALSE}
+```
+I found out that way more people watched the movie, which was **`r movie_num`**, compared to the book, which was **`r reading_num`** and the audiobook version, which was, **`r audiobook_num`**, which I found interesting mainly because I knew that the movie would overall be more popular but not by that much. There are also various other ways that the people have watched the movie aka via Netflix, or other sources on the web and I just don't necessarily hear about people going to checkout movies at a library enough to have the number that much higher. Additionally I found that the year it was most popular was **`r max_year`** because I thought it would be more recent since I have seen the movie have a rise in popularity over the past year or two with it being top of the charts on Netflix and other streaming sites. Along with that too I found that the movie's popularity was at it's lowest in **`r min_year`**. 
 
 ### The Dataset
 
-- Who collected/published the data?  
-- What are the parameters of the data (dates, number of checkouts, kinds of books, etc.)?
-- How was the data collected or generated?  
-- Why was the data collected?  
-- What, if any, ethical questions do you need to consider when working with this data?  
-- What are possible limitations or problems with this data?   (at least 200 words)
+**Who collected/published the data?** 
+The Seattle Public Library published and collected the data, though I extracted the data from their datasets by searching for the movie and the book versions separately. 
+
+**What are the parameters of the data (dates, number of checkouts, kinds of books, etc.)?** 
+The story. The book came before the movie and the movie was titled differently from the book. "The Social Network" by David Fincher is the title of the movie and "The Accidental Billionaires" by Ben Mezrich is the name of the book that the movie was based off of. 
+
+**How was the data collected or generated?**  
+The Seattle Public Library dataset collects their data through their checkout system which stores various things about the things checked out in the library such as, book title, material type, authors, ISBN, and more. They update the dataset every month with the new activity that they have collected. 
+
+**Why was the data collected?**
+The Seattle Public Library data set is part of the overall collection of data in Seattle's Open Data Program by the city itself which provides openly available data to the public for the purpose of increasing quality of life of its citizens, transparency, accountability, and accountability. But, The Seattle Public Library collects data in order to track the usage of their materials, resources, and services. Such things outside of only checkouts of books and movies include, participation of programs and library visits. They do this in order to learn the interests and needs of the people of the city which helps them make more informed decisions about their efforts in certain programs. 
+
+**What, if any, ethical questions do you need to consider when working with this data?**
+If the analysis involves using data that was collected for one purpose. For example, tracking borrowing history for another purpose, such as trends in reading habits, it is important to obtain informed consent from the people before using their data in this way.
+
+**What are possible limitations or problems with this data?**
+Possible limitations or problems when working with this data is that it is not a clear or accurate consensus of the overall public perception of a book or movie unless the media is only exclusive to the library due to the number of outside sources. For example, the average person who owes a Netflix account or has an account on any streaming service is not going to go to the library for a movie that they can just stream online, or the average person who owes an Audible subscription is not going to go the library to get a book that they can listen to on Audible already. There is just way too many ways nowadays that people can get media that they want to consume outside of a library which makes working with this data not an accurate consensus. 
 
 
-### First Trends Over Time Chart
+###  Checkouts Over Time by Medium
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
-
-The first chart that you will create and include will show the trend over time of your variable/topic/interest. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Show more than one, but fewer than ~10 trends
-  - For example, two books, or 5 different mediums
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear - legend title
-In your .Rmd file, make sure to describe why you included the chart, and what patterns emerged
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, warning = FALSE, code = readLines("chart1_example.R")}
+```{r echo=FALSE, warning=FALSE, results = 'hide', message = FALSE, code=readLines("chart1.R")}
 ```
 
-### Second Trends Over Time Chart
+Here we can see how the story of Mark Zuckerberg and Facebook has been trending downwards in interest by the checkouts in different mediums. There was obviously a huge spike in the beginning when the movie came out winning multiple awards in 2010-2011 and then now in present times the interest in the story has declined.
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+### Book vs Audiobook Checkouts Over Time
 
-The second chart that you will create and include will show another trend over time of your variable/topic/interest. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Show more than one, but fewer than ~10 trends
-  - For example, two books, or 5 different mediums
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear - legend title
-In your .Rmd file, make sure to describe why you included the chart, and what patterns emerged
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart2_example.R")}
+```{r, echo = FALSE, results = 'hide', message = FALSE, code = readLines("chart2.R")}
 ```
 
-### Your Choice
+This chart compares the number of times the audiobook was checked out vs the number of times the physical copy of the book was checked out. From the data we see that initially, the book was way more popular than the audiobook, however the audiobook eventually started becoming more popular to more present day. 
 
-The last chart is up to you. It could be a line plot, scatter plot, histogram, bar plot, stacked bar plot, and more. Here are some requirements to help guide your design:
+### Popularity among different mediums of The Accidental Billionaires
 
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear legend title
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart2_example.R")}
+```{r, echo = FALSE, results = 'hide', message = FALSE, code = readLines("chart3.R")}
 ```
 
+This chart just visualizes how much more the movie has been checked out than the other forms of the same story. Other than the movie, visually, the actual physical book looks like it has been checked out roughly the same as the other forms of it. 
 
